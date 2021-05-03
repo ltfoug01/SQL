@@ -23,15 +23,15 @@ ORDER BY emp_lname, emp_fname
 
 --PROBLEM 30
 --Write a query to display the first name, last name, phone number, title, and depart-ment 
---number of employees who work in department 300 or have the title ìCLERK I.î Sort the output by last name and then by first name 
+--number of employees who work in department 300 or have the title ‚ÄúCLERK I.‚Äù Sort the output by last name and then by first name 
 SELECT	emp_fname, emp_lname, emp_phone, emp_title, dept_num
 FROM	lgemployee
 WHERE	emp_title = 'CLERK I' OR dept_num = '300'
 ORDER BY emp_lname, emp_fname
 
 --PROBLEM 31
---Write a query to display the employee number, last name, first name, salary ìfromî date,
---Salary end date, and salary amount for employees 83731, 83745, and 84039. Sort the output by employee number and salary ìfromî date
+--Write a query to display the employee number, last name, first name, salary ‚Äúfrom‚Äù date,
+--Salary end date, and salary amount for employees 83731, 83745, and 84039. Sort the output by employee number and salary ‚Äúfrom‚Äù date
 SELECT	E.emp_num,E.emp_lname,E.emp_fname, S.sal_from, S.sal_end, S.sal_amount
 FROM	lgemployee E INNER JOIN lgsalary_history S ON E.emp_num = S.emp_num
 WHERE	E.emp_num IN ('83731','83745','84039')
@@ -40,7 +40,7 @@ ORDER BY E.emp_num, S.sal_from
 --PROBLEM 32
 --Write a query to display the first name, last name, street, city, state, and zip code of any
 --customer who purchased a Foresters Best brand top coat between July 15, 2015, and July 31, 2015.
---If a customer purchased more than one such product, display the customerís information only once in the output.
+--If a customer purchased more than one such product, display the customer‚Äôs information only once in the output.
 --Sort the output by state, last name, and then first name 
 SELECT	C.cust_fname, C.cust_lname, C.cust_street, C.cust_city, C.cust_state, C.cust_zip
 FROM	lgcustomer C INNER JOIN lginvoice I ON I.cust_code = C.cust_code
@@ -55,7 +55,7 @@ ORDER BY C.cust_state, C.cust_lname, C.cust_fname
 
 --PROBLEM 33
 --Write a query to display the employee number, last name, email address, title, and department name of each employee whose job
---title ends in the word ìASSOCIATE.î Sort the output by department name and employee title 
+--title ends in the word ‚ÄúASSOCIATE.‚Äù Sort the output by department name and employee title 
 SELECT	E.emp_num, E.emp_lname, E.emp_email, E.emp_title, D.dept_name
 FROM	lgemployee E INNER JOIN lgdepartment D ON E.dept_num = D.dept_num
 WHERE	emp_title LIKE '%ASSOCIATE'
@@ -82,7 +82,7 @@ FROM	lgproduct
 GROUP BY prod_base, prod_type
 
 --PROBLEM 37
---Write a query to display the total inventoryóthat is, the sum of all products on hand for each brand ID.
+--Write a query to display the total inventory‚Äîthat is, the sum of all products on hand for each brand ID.
 --Sort the output by brand ID in descending order 
 SELECT	B.brand_id, SUM(P.prod_qoh) AS 'TOTAL_INVENTORY'
 FROM	lgbrand B INNER JOIN lgproduct P ON B.brand_id = P.brand_id
